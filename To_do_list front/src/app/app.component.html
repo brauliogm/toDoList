@@ -1,0 +1,42 @@
+<div class="container">
+    <h1 class="my-4 text-center">To do list</h1>
+    <div class="row">
+        <div class="col-xl-3"></div>
+        <div class="col-xl-6">
+            <app-lista></app-lista>
+        </div>
+        <div class="col-xl-3">
+            <div class="d-grid gap-2">
+                <button
+                    type="button"
+                    name="agregar"
+                    id="agregar"
+                    class="btn btn-primary"
+                >
+                    Add Task
+                </button>
+            </div>
+            
+        </div>
+    </div>
+    <h3 class="my-4 text-center">Tasks Done</h3>
+    <div class="row">
+        <div class="col-xl-3"></div>
+        <div class="col-xl-6">
+            <app-tasks-done></app-tasks-done>            
+        </div>
+        <div class="col-xl-3">
+            <div class="d-grid gap-2">
+                <button
+                    type="button"
+                    name="limpiar"
+                    id="limpiar"
+                    class="btn btn-danger"
+                >
+                    Clean List
+                </button>
+            </div>
+            
+        </div>
+    </div>
+</div>
