@@ -1,6 +1,8 @@
-<ul class="list-group">
-  <li class="list-group-item">
-    <input class="form-check-input me-1" type="checkbox" value="" id="firstCheckbox">
-    <label class="form-check-label" for="firstCheckbox">First checkbox</label>
-  </li>
-</ul>
+
+  <ul class="list-group">
+    <li *ngFor="let tareas of lista" class="list-group-item">
+      <input class="form-check-input me-1" type="checkbox" value="" id="firstCheckbox">
+      <label class="form-check-label" for="firstCheckbox">{{tareas.tarea}}</label>
+    </li>
+  </ul>
+<p *ngIf="lista.length == 0" class="text-center fs-3 text-body-secondary">List Empty</p>

@@ -1,31 +1,34 @@
 <div class="container">
     <h1 class="my-4 text-center">To do list</h1>
     <div class="row">
-        <div class="col-xl-3"></div>
-        <div class="col-xl-6 mb-4">
-            <app-lista></app-lista>
+        <div class="col-xl-3 mb-4">
+            <div class="form-floating">
+                <textarea class="form-control" placeholder="Leave a comment here" name="tareaInput"
+                id="tareaInput" style="height: 100px" [(ngModel)]="tarea.tarea"></textarea>
+                <label for="floatingTextarea2">Task</label>
+            </div>
         </div>
-        <div class="col-xl-3">
+        <div class="col-xl-3 mb-4">
             <div class="d-grid gap-2">
                 <button
                     type="button"
                     name="agregar"
                     id="agregar"
                     class="btn btn-primary"
+                    (click)="addTask(tarea)"
                 >
                     Add Task
                 </button>
             </div>
-            
+        </div>
+        <div class="col-xl-6">
+            <app-lista></app-lista>
         </div>
     </div>
     <h3 class="my-4 text-center">Tasks Done</h3>
     <div class="row">
         <div class="col-xl-3"></div>
-        <div class="col-xl-6 mb-4">
-            <app-tasks-done></app-tasks-done>            
-        </div>
-        <div class="col-xl-3">
+        <div class="col-xl-3 mb-4">
             <div class="d-grid gap-2">
                 <button
                     type="button"
@@ -35,8 +38,10 @@
                 >
                     Clean List
                 </button>
-            </div>
-            
+            </div>        
+        </div>
+        <div class="col-xl-6">
+            <app-tasks-done></app-tasks-done> 
         </div>
     </div>
 </div>
