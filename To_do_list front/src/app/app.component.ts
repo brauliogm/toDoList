@@ -21,6 +21,7 @@ export class AppComponent {
     console.log(newTask);
     
     this.listaService.agregarTarea(newTask);
+    this.tarea = new Tarea(),
     this.ngInit();
   }
 }
