@@ -17,6 +17,10 @@ export class ListaComponent {
     this.lista = this.listaService.lista;
   }
 
+  deleteTask(){
+    
+  }
+
   
 
 }
