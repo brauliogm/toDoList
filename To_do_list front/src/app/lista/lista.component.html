@@ -1,6 +1,6 @@
 
   <ul class="list-group">
-    <li *ngFor="let tarea of lista" class="list-group-item">
+    <li *ngFor="let tarea of lista, let i = index" class="list-group-item">
       <div class="d-flex justify-content-between align-items-center">
         <div>
           <input class="form-check-input me-2" type="checkbox" value="" id="firstCheckbox">
@@ -8,7 +8,7 @@
         </div>
 
         <div>
-          <button class="btn btn-danger absolute my-auto" type="submit" (click)="deleteTask()">X</button>
+          <button class="btn btn-danger absolute my-auto" type="submit" (click)="deleteTask(i)">X</button>
         </div>
       </div>
       

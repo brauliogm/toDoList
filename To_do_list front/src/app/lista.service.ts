@@ -13,11 +13,11 @@ export class ListaService {
   constructor(private clientHTTP: HttpClient) { }
 
   agregarTarea(nuevaTarea: Tarea){
-    console.log(nuevaTarea);
-    
     this.lista.push(nuevaTarea);
     console.log(this.lista);
-    
   }
 
+  eliminarTarea(numTarea: number){
+    this.lista.slice(numTarea, 1);
+  }
 }
