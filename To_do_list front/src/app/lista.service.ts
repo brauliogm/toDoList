@@ -14,10 +14,9 @@ export class ListaService {
 
   agregarTarea(nuevaTarea: Tarea){
     this.lista.push(nuevaTarea);
-    console.log(this.lista);
   }
 
   eliminarTarea(numTarea: number){
-    this.lista.slice(numTarea, 1);
+    this.lista.splice(numTarea, 1);
   }
 }
