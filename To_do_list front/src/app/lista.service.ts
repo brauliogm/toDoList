@@ -29,4 +29,10 @@ export class ListaService {
   eliminarTareaCompletada(numTarea: number){
     this.listaCompletada.splice(numTarea, 1);
   }
+  
+  deleteAllTaskComplete(){
+    this.listaCompletada.splice(0, this.listaCompletada.length);
+  }
+  
+
 }

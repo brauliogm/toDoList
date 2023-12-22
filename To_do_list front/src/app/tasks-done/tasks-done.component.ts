@@ -17,11 +17,12 @@ export class TasksDoneComponent {
     this.listaComplete = this.listaService.listaCompletada;
   }
 
-  taskComplete(tarea: Tarea,i: number){
-
+  deleteTask(numTarea: number){
+    this.listaService.eliminarTareaCompletada(numTarea);
   }
 
-  deleteTask(i:number){
-
+  taskIncomplete(task: Tarea, i: number){
+    this.listaService.agregarTarea(task)
+    this.deleteTask(i);
   }
 }

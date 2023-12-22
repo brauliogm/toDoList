@@ -22,4 +22,8 @@ export class AppComponent {
     this.tarea = new Tarea();
     this.ngInit();
   }
+
+  cleanTaskComplete(){
+    this.listaService.deleteAllTaskComplete();
+  }
 }
