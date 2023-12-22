@@ -1,4 +1,5 @@
 export class Tarea{
     idTarea: number;
-    descripcion: string;
+    descripcion: string = "";
+    isChecked:boolean = false;
 }

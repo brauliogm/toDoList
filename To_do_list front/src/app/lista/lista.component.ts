@@ -10,7 +10,6 @@ import { ListaService } from '../lista.service';
 export class ListaComponent {
 
   lista: Tarea[];
-  index: number;
 
   constructor(private listaService: ListaService){}
 
@@ -23,6 +22,10 @@ export class ListaComponent {
     this.listaService.eliminarTarea(numTarea);
   }
 
+  taskComplete(task: Tarea, i: number){
+    this.listaService.agregarTareaCompletada(task)
+    this.deleteTask(i);
+  }
   
 
 }

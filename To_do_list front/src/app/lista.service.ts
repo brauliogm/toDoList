@@ -7,6 +7,7 @@ import { Tarea } from './tarea';
 })
 export class ListaService {
   lista: Tarea[] = [];
+  listaCompletada: Tarea[] = [];
 
   private urlBase = "";
 
@@ -18,5 +19,11 @@ export class ListaService {
 
   eliminarTarea(numTarea: number){
     this.lista.splice(numTarea, 1);
+  }
+
+  agregarTareaCompletada(nuevaTarea: Tarea){
+    this.listaCompletada.push(nuevaTarea);
+    console.log(this.listaCompletada);
+    
   }
 }
