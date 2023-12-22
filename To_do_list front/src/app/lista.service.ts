@@ -23,7 +23,10 @@ export class ListaService {
 
   agregarTareaCompletada(nuevaTarea: Tarea){
     this.listaCompletada.push(nuevaTarea);
-    console.log(this.listaCompletada);
     
+  }
+
+  eliminarTareaCompletada(numTarea: number){
+    this.listaCompletada.splice(numTarea, 1);
   }
 }

@@ -18,7 +18,6 @@ export class ListaComponent {
   }
 
   deleteTask(numTarea: number){
-    console.log(numTarea);
     this.listaService.eliminarTarea(numTarea);
   }
 
