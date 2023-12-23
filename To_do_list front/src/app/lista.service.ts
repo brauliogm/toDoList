@@ -6,6 +6,7 @@ import { Tarea } from './tarea';
   providedIn: 'root'
 })
 export class ListaService {
+  task: Tarea;
   lista: Tarea[] = [];
   listaCompletada: Tarea[] = [];
 
@@ -32,6 +33,10 @@ export class ListaService {
   
   deleteAllTaskComplete(){
     this.listaCompletada.splice(0, this.listaCompletada.length);
+  }
+
+  editTask(task: Tarea){
+    
   }
   
 

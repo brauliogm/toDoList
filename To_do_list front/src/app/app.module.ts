@@ -7,12 +7,14 @@ import { ListaComponent } from './lista/lista.component';
 import { TasksDoneComponent } from './tasks-done/tasks-done.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { FormComponent } from './form/form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListaComponent,
-    TasksDoneComponent
+    TasksDoneComponent,
+    FormComponent
   ],
   imports: [
     BrowserModule,

@@ -4,11 +4,12 @@
     <div class="d-flex justify-content-between align-items-center">
       <div>
         <input class="form-check-input me-2" type="checkbox" [(ngModel)]="tarea.isChecked" (change)="taskComplete(tarea,i)" id="firstCheckbox">
-        <label class="form-check-label" for="firstCheckbox">{{tarea.descripcion}}</label>
+        <label class="form-check-label disabled-label" for="firstCheckbox">{{tarea.descripcion}}</label>
       </div>
 
-      <div>
-        <button class="btn btn-danger absolute my-auto" type="submit" (click)="deleteTask(i)">X</button>
+      <div class="d-flex justify-content-between">
+        <button class="btn btn-success absolute ms-2" type="submit" (click)="editTask(tarea)">X</button>
+        <button class="btn btn-danger absolute ms-2" type="submit" (click)="deleteTask(i)">X</button>
       </div>
     </div>
     

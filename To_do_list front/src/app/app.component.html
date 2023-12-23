@@ -3,17 +3,7 @@
     <div class="row">
         <div class="col-xl-6 mb-4">
 
-            <form class="form-floating row g-3" (submit)="addTask(tarea)" ngNativeValidate>
-
-                <div class="col-md-12">
-                  <input type="text" name="tareaInput" id="tareaInput" class="form-control" placeholder="Leave a task here" [(ngModel)]="tarea.descripcion" required minlength="1">
-                </div>
-                
-                <div class="col-12">
-                  <button class="btn btn-primary" type="submit">Add Task</button>
-                </div>
-
-            </form>
+            <app-form></app-form>
 
         </div>
         <div class="col-xl-6">

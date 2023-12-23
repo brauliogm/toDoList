@@ -13,14 +13,14 @@ export class AppComponent {
 
   constructor(private listaService: ListaService){}
 
-  ngInit(){
-    
+  ngOnInit(){
+  
   }
   
   addTask(newTask: Tarea) {
     this.listaService.agregarTarea(newTask);
     this.tarea = new Tarea();
-    this.ngInit();
+    this.ngOnInit()
   }
 
   cleanTaskComplete(){

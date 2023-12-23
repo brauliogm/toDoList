@@ -3,7 +3,7 @@
     <div class="d-flex justify-content-between align-items-center">
       <div>
         <input class="form-check-input me-2" type="checkbox" [(ngModel)]="tarea.isChecked" (change)="taskIncomplete(tarea,i)" id="taskComplete">
-        <label class="form-check-label text-decoration-line-through" for="taskComplete">{{tarea.descripcion}}</label>
+        <label class="form-check-label text-decoration-line-through disabled-label" for="taskComplete">{{tarea.descripcion}}</label>
       </div>
 
       <div>

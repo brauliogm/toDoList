@@ -25,6 +25,12 @@ export class ListaComponent {
     this.listaService.agregarTareaCompletada(task)
     this.deleteTask(i);
   }
+
+  editTask(task: Tarea){
+    this.listaService.task = task;
+    console.log(this.listaService.task);
+    
+  }
   
 
 }
