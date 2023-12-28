@@ -13,12 +13,7 @@ export class FormComponent {
   constructor(private listaService: ListaService){}
 
   ngOnInit(){
-    if (this.tarea.descripcion == "") {
-      this.tarea.descripcion = this.listaService.task.descripcion;
-    }
-    console.log('ola');
-    console.log(this.tarea.descripcion);
-
+    
   }
 
   addTask(newTask: Tarea) {

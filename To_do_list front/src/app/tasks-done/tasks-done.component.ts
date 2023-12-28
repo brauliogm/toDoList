@@ -9,7 +9,7 @@ import { ListaService } from '../lista.service';
 })
 export class TasksDoneComponent {
 
-  listaComplete: Tarea[]
+  listaComplete: Tarea[];
 
   constructor(private listaService: ListaService){}
 
