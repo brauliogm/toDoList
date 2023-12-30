@@ -57,7 +57,6 @@ public class TareaControlador {
         return ResponseEntity.ok(tarea);
     }
 
-
     @DeleteMapping("/tarea/{id}")
     public ResponseEntity<Map<String, Boolean>> eliminarTarea(@PathVariable int idTarea){
         Tarea tarea = tareaServicio.buscarTareaPorId(idTarea);

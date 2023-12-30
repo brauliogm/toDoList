@@ -32,4 +32,9 @@ public class TareaCompletadaServicio implements ITareaCompletadaServicio{
     public void eliminarTareaCompletadaPorId(Integer idTareaCompletada) {
         this.tareaCompletadaRepositorio.deleteById(idTareaCompletada);
     }
+
+    @Override
+    public void deleteAllTasks() {
+        this.tareaCompletadaRepositorio.deleteAll();
+    }
 }

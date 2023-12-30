@@ -13,4 +13,6 @@ public interface ITareaCompletadaServicio {
     public TareaCompletada guardarTareaCompletada(TareaCompletada tareaCompletada);
 
     public void eliminarTareaCompletadaPorId(Integer idTareaCompletada);
+
+    public void deleteAllTasks();
 }
