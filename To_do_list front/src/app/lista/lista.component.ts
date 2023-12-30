@@ -14,7 +14,15 @@ export class ListaComponent {
   constructor(private listaService: ListaService){}
 
   ngOnInit(){
-    this.lista = this.listaService.lista;
+    this.obtenerTareas()
+  }
+
+  private obtenerTareas(){
+    this.listaService.obtenerListaTarea().subscribe(
+      (datos => {
+        this.lista = datos;
+      })
+    )
   }
 
   deleteTask(numTarea: number){

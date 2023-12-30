@@ -1,9 +1,6 @@
 package com.toDoList.todolist.modelo;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,6 +15,10 @@ public class Tarea {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Integer idTarea;
-    String descripcion;
+    private Integer idTarea;
+
+    private String descripcion;
+
+    @Column(columnDefinition = "tinyint(1)")
+    private boolean isChecked = false;
 }

@@ -2,8 +2,8 @@
   <li *ngFor="let tarea of listaComplete, let i = index" class="list-group-item">
     <div class="d-flex justify-content-between align-items-center">
       <div>
-        <input class="form-check-input me-2" type="checkbox" [(ngModel)]="tarea.isChecked" (change)="taskIncomplete(tarea,i)" id="taskComplete">
-        <label class="form-check-label text-decoration-line-through disabled-label" for="taskComplete">{{tarea.descripcion}}</label>
+        <input class="form-check-input me-2" type="checkbox" [(ngModel)]="tarea.tarea.isChecked" (change)="taskIncomplete(tarea.tarea,i)" id="taskComplete">
+        <label class="form-check-label text-decoration-line-through disabled-label" for="taskComplete">{{tarea.tarea.descripcion}}</label>
       </div>
 
       <div>

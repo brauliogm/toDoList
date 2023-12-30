@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Tarea } from '../tarea';
 import { ListaService } from '../lista.service';
+import { TareaCompletada } from '../tareaCompletada';
 
 @Component({
   selector: 'app-tasks-done',
@@ -9,12 +10,22 @@ import { ListaService } from '../lista.service';
 })
 export class TasksDoneComponent {
 
-  listaComplete: Tarea[];
+  listaComplete: TareaCompletada[];
 
   constructor(private listaService: ListaService){}
 
   ngOnInit(){
-    this.listaComplete = this.listaService.listaCompletada;
+    this.obtenerListaTareasCompletadas()
+  }
+
+  private obtenerListaTareasCompletadas(){
+    this.listaService.obtenerListaTareasCompletadas().subscribe(
+      (datos => {
+        this.listaComplete = datos;
+        console.log(datos);
+        
+      })
+    )
   }
 
   deleteTask(numTarea: number){
