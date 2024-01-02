@@ -1,13 +1,13 @@
 <ul class="list-group">
-  <li *ngFor="let tarea of listaComplete, let i = index" class="list-group-item">
+  <li *ngFor="let tarea of listaComplete" class="list-group-item">
     <div class="d-flex justify-content-between align-items-center">
       <div>
-        <input class="form-check-input me-2" type="checkbox" [(ngModel)]="tarea.tarea.isChecked" (change)="taskIncomplete(tarea.tarea,i)" id="taskComplete">
+        <input class="form-check-input me-2" type="checkbox" [(ngModel)]="tarea.tarea.isChecked" (change)="taskIncomplete(tarea.tarea, tarea.tarea.idTarea)" id="taskComplete">
         <label class="form-check-label text-decoration-line-through disabled-label" for="taskComplete">{{tarea.tarea.descripcion}}</label>
       </div>
 
       <div>
-        <button class="btn btn-danger absolute my-auto" type="submit" (click)="deleteTask(i)">X</button>
+        <button class="btn btn-danger absolute my-auto" type="submit" (click)="deleteTask(tarea.tarea.idTarea)">X</button>
       </div>
     </div>
     

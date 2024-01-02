@@ -8,10 +8,7 @@ import { TareaCompletada } from './tareaCompletada';
   providedIn: 'root'
 })
 export class ListaService {
-  task: Tarea;
-  lista: Tarea[] = [];
-  listaCompletada: Tarea[] = [];
-
+  
   private urlTarea = "http://localhost:8080/toDo-app/tarea";
   private urlTareaCompletada = "http://localhost:8080/toDo-app/tarea-completada";
 
@@ -25,30 +22,36 @@ export class ListaService {
     return this.clientHTTP.get<TareaCompletada[]>(this.urlTareaCompletada);
   }
 
-  agregarTarea(nuevaTarea: Tarea){
-    this.lista.push(nuevaTarea);
+  agregarTarea(nuevaTarea: Tarea): Observable<Object>{
+    return this.clientHTTP.post(this.urlTarea, nuevaTarea);
   }
 
-  eliminarTarea(numTarea: number){
-    this.lista.splice(numTarea, 1);
+  agregarTareaCompletada(nuevaTareaCompletada: Tarea): Observable<Object>{
+    return this.clientHTTP.post(this.urlTareaCompletada, nuevaTareaCompletada)
   }
 
-  agregarTareaCompletada(nuevaTarea: Tarea){
-    this.listaCompletada.push(nuevaTarea);
-    
-  }
-
-  eliminarTareaCompletada(numTarea: number){
-    this.listaCompletada.splice(numTarea, 1);
+  obtenerTareaPorId(idTarea: number){
+    return this.clientHTTP.get<Tarea>(`${this.urlTarea}/${idTarea}`);
   }
   
-  deleteAllTaskComplete(){
-    this.listaCompletada.splice(0, this.listaCompletada.length);
+  obtenerTareaCompletadaPorId(idTareaCompletada: number){
+    return this.clientHTTP.get<TareaCompletada>(`${this.urlTareaCompletada}/${idTareaCompletada}`);
   }
 
-  editTask(task: Tarea){
-    
+  eliminarTarea(idTarea: number): Observable<Object>{
+    return this.clientHTTP.delete(`${this.urlTarea}/${idTarea}`);
+  }
+
+  eliminarTareaCompletada(idTareaCompletada: number): Observable<Object>{
+    return this.clientHTTP.delete(`${this.urlTareaCompletada}/${idTareaCompletada}`);
   }
   
+  deleteAllTaskComplete(): Observable<Object>{
+    return this.clientHTTP.delete(this.urlTareaCompletada);
+  }
 
+  editTask(idTarea: number, task: Tarea): Observable<Object>{
+    return this.clientHTTP.put(`${this.urlTarea}/${idTarea}`,task);
+  }
+  
 }

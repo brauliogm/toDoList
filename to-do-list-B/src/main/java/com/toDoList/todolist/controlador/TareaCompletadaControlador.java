@@ -32,7 +32,7 @@ public class TareaCompletadaControlador {
         return tareasCompletadas;
     }
 
-    @GetMapping("/tarea-completada/{id}")
+    @GetMapping("/tarea-completada/{idTareaCompletada}")
     public ResponseEntity<TareaCompletada> obtenerTareaCompletadaPorId(@PathVariable int idTareaCompletada){
         TareaCompletada tareaCompletada = tareaCompletadaServicio.buscarTareaCompletadaPorId(idTareaCompletada);
         if (tareaCompletada != null){
@@ -48,7 +48,7 @@ public class TareaCompletadaControlador {
         return tareaCompletadaServicio.guardarTareaCompletada(tareaCompletada);
     }
 
-    @PutMapping("/tarea-completada/{id}")
+    @PutMapping("/tarea-completada/{idTareaCompletada}")
     public ResponseEntity<TareaCompletada> actualizarTareaCompletada(@PathVariable int idTareaCompletada, @RequestBody Tarea tareaCompletadaRecibida){
         TareaCompletada tareaCompletada = tareaCompletadaServicio.buscarTareaCompletadaPorId(idTareaCompletada);
         if (tareaCompletada == null)
@@ -58,7 +58,7 @@ public class TareaCompletadaControlador {
         return ResponseEntity.ok(tareaCompletada);
     }
 
-    @DeleteMapping("/tarea-completada/{id}")
+    @DeleteMapping("/tarea-completada/{idTareaCompletada}")
     public ResponseEntity<Map<String, Boolean>> eliminarTareaCompletada(@PathVariable int idTareaCompletada){
         TareaCompletada tareaCompletada = tareaCompletadaServicio.buscarTareaCompletadaPorId(idTareaCompletada);
         if (tareaCompletada == null)

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Tarea } from './tarea';
 import { ListaService } from './lista.service';
+import { TareaCompletada } from './tareaCompletada';
 
 @Component({
   selector: 'app-root',
@@ -9,25 +10,28 @@ import { ListaService } from './lista.service';
 })
 export class AppComponent {
   
-  tarea: Tarea = new Tarea();
-  listaCompletada: Tarea[];
+  listaCompletada: TareaCompletada[];
   
   constructor(private listaService: ListaService){}
   
   
   ngOnInit(){
-    this.listaCompletada = this.listaService.listaCompletada;
+    this.listaService.obtenerListaTareasCompletadas().subscribe(
+      (datos => {
+        this.listaCompletada = datos;
+        console.log(datos);
+        
+      })
+    )
   }
   
-  addTask(newTask: Tarea) {
-    this.listaService.agregarTarea(newTask);
-    this.tarea = new Tarea();
-    this.ngOnInit()
-    console.log(this.listaCompletada);
-    
-  }
-
   cleanTaskComplete(){
-    this.listaService.deleteAllTaskComplete();
+    this.listaService.deleteAllTaskComplete().subscribe(
+      {
+        next: (datos) => this.ngOnInit(),
+        error: (error) => console.log(error)
+        
+      }
+    )
   }
 }

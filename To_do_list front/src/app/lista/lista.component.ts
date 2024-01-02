@@ -26,7 +26,12 @@ export class ListaComponent {
   }
 
   deleteTask(numTarea: number){
-    this.listaService.eliminarTarea(numTarea);
+    this.listaService.eliminarTarea(numTarea).subscribe(
+      (datos => {
+        console.log(datos);
+        
+      })
+    )
   }
 
   taskComplete(task: Tarea, i: number){
@@ -35,8 +40,7 @@ export class ListaComponent {
   }
 
   editTask(task: Tarea){
-    this.listaService.task = task;
-    console.log(this.listaService.task);
+    console.log(task);
     
   }
   

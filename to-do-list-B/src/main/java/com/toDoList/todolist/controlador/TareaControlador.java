@@ -31,8 +31,8 @@ public class TareaControlador {
         return tareas;
     }
 
-    @GetMapping("/tarea/{id}")
-    public ResponseEntity<Tarea> obtenerTareaPorId(@PathVariable Integer idTarea){
+    @GetMapping("/tarea/{idTarea}")
+    public ResponseEntity<Tarea> obtenerTareaPorId(@PathVariable int idTarea){
         Tarea tarea = tareaServicio.buscarTareaPorId(idTarea);
         if (tarea != null){
             return ResponseEntity.ok(tarea);
@@ -47,8 +47,8 @@ public class TareaControlador {
         return tareaServicio.guardarTarea(tarea);
     }
 
-    @PutMapping("/tarea/{id}")
-    public ResponseEntity<Tarea> actualizarTarea(@PathVariable int idTarea, @RequestBody Tarea tareaRecibida){
+    @PutMapping("/tarea/{idTarea}")
+    public ResponseEntity<Tarea> actualizarTarea(@PathVariable Integer idTarea, @RequestBody Tarea tareaRecibida){
         Tarea tarea = tareaServicio.buscarTareaPorId(idTarea);
         if (tarea == null)
             throw new RecursoNoEncontradoExeption("No se encontro el id: " + idTarea);
@@ -57,8 +57,8 @@ public class TareaControlador {
         return ResponseEntity.ok(tarea);
     }
 
-    @DeleteMapping("/tarea/{id}")
-    public ResponseEntity<Map<String, Boolean>> eliminarTarea(@PathVariable int idTarea){
+    @DeleteMapping("/tarea/{idTarea}")
+    public ResponseEntity<Map<String, Boolean>> eliminarTarea(@PathVariable Integer idTarea){
         Tarea tarea = tareaServicio.buscarTareaPorId(idTarea);
         if (tarea == null)
             throw new RecursoNoEncontradoExeption("No se encontro el id: " + idTarea);

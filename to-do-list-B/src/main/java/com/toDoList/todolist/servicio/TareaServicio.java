@@ -20,7 +20,8 @@ public class TareaServicio implements ITareaServicio{
 
     @Override
     public Tarea buscarTareaPorId(Integer idTarea) {
-        return this.tareaRepositorio.findById(idTarea).orElse(null);
+        Tarea tarea = this.tareaRepositorio.findById(idTarea).orElse(null);
+        return tarea;
     }
 
     @Override
