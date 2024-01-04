@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { Tarea } from '../tarea';
 import { ListaService } from '../lista.service';
+import { TareaCompletada } from '../tareaCompletada';
 
 @Component({
   selector: 'app-lista',
@@ -15,6 +16,15 @@ export class ListaComponent {
 
   ngOnInit(){
     this.obtenerTareas()
+    this.listaService.updateList$.subscribe(() => {
+      // Refresh the list or perform any necessary action
+      this.refreshList();
+    });
+  }
+
+  refreshList() {
+    // Implement logic to refresh the list from the database
+    this.obtenerTareas();
   }
 
   private obtenerTareas(){
@@ -27,16 +37,35 @@ export class ListaComponent {
 
   deleteTask(numTarea: number){
     this.listaService.eliminarTarea(numTarea).subscribe(
-      (datos => {
+      datos => {
         console.log(datos);
-        
-      })
+        this.obtenerTareas();
+      },
+      error => {
+        console.log('Error al eliminar tarea:', error);
+      }
     )
   }
 
   taskComplete(task: Tarea, i: number){
-    this.listaService.agregarTareaCompletada(task)
-    this.deleteTask(i);
+    const idDeleteTask = i;
+    console.log(task);
+    this.deleteTask(idDeleteTask);
+    
+    const tareaCompletada = new TareaCompletada(task);
+
+    console.log(tareaCompletada);
+    
+    this.listaService.agregarTareaCompletada(tareaCompletada).subscribe(
+      {
+        next: (datos) => {
+          console.log(datos);
+          this.obtenerTareas();
+        }
+        ,
+        error: (error) => console.log(error)        
+      }
+    )
   }
 
   editTask(task: Tarea){

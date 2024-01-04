@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Tarea } from './tarea';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { TareaCompletada } from './tareaCompletada';
 
 @Injectable({
@@ -11,11 +11,18 @@ export class ListaService {
   
   private urlTarea = "http://localhost:8080/toDo-app/tarea";
   private urlTareaCompletada = "http://localhost:8080/toDo-app/tarea-completada";
+  private updateListSource = new Subject<void>();
+
+  updateList$ = this.updateListSource.asObservable();
 
   constructor(private clientHTTP: HttpClient) { }
 
   obtenerListaTarea(): Observable<Tarea[]>{
     return this.clientHTTP.get<Tarea[]>(this.urlTarea);
+  }
+
+  updateList() {
+    this.updateListSource.next();
   }
 
   obtenerListaTareasCompletadas(): Observable<TareaCompletada[]>{
@@ -26,7 +33,7 @@ export class ListaService {
     return this.clientHTTP.post(this.urlTarea, nuevaTarea);
   }
 
-  agregarTareaCompletada(nuevaTareaCompletada: Tarea): Observable<Object>{
+  agregarTareaCompletada(nuevaTareaCompletada: TareaCompletada): Observable<Object>{
     return this.clientHTTP.post(this.urlTareaCompletada, nuevaTareaCompletada)
   }
 

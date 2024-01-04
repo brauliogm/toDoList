@@ -29,7 +29,15 @@ export class TasksDoneComponent {
   }
 
   deleteTask(numTarea: number){
-    this.listaService.eliminarTareaCompletada(numTarea);
+    this.listaService.eliminarTareaCompletada(numTarea).subscribe(
+      datos => {
+        console.log(datos);
+        this.obtenerListaTareasCompletadas();
+      },
+      error => {
+        console.log('Error al eliminar tarea:', error);
+      }
+    )
   }
 
   taskIncomplete(task: Tarea, i: number){

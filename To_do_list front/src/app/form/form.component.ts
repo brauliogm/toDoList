@@ -25,16 +25,11 @@ export class FormComponent {
         next: (datos) => {
           console.log(datos)
           this.tarea = new Tarea();
-          const currentUrl = this.router.url;
-          this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-            this.router.navigate([currentUrl]);
-            this.cdr.detectChanges();
-          });
+          this.listaService.updateList();
         }
         ,
         error: (error) => console.log(error)        
       }
     )
   }
-  
 }
