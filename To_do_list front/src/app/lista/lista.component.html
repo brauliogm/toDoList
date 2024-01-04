@@ -3,7 +3,7 @@
   <li *ngFor="let tarea of lista" class="list-group-item">
     <div class="d-flex justify-content-between align-items-center">
       <div>
-        <input class="form-check-input me-2" type="checkbox" [(ngModel)]="tarea.isChecked" (change)="taskComplete(tarea, tarea.idTarea)" id="firstCheckbox">
+        <input class="form-check-input me-2" type="checkbox" [(ngModel)]="tarea.isChecked" (change)="taskComplete(tarea.descripcion, tarea.idTarea)" id="firstCheckbox">
         <label class="form-check-label disabled-label" for="firstCheckbox">{{tarea.descripcion}}</label>
       </div>
 

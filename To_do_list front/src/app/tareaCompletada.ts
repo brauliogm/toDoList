@@ -2,9 +2,10 @@ import { Tarea } from "./tarea";
 
 export class TareaCompletada{
     idTareaCompletada: number;
-    tarea: Tarea;
+    descripcion: string = "";
+    isChecked:boolean = true;
 
-    constructor(tarea?: Tarea) {
-        this.tarea = tarea || new Tarea(); // Si tarea es undefined, asigna una nueva instancia de Tarea
+    constructor(descripcion?: string) {
+        this.descripcion = descripcion || ""; // Si tarea es undefined, asigna una nueva instancia de Tarea
     }
 }

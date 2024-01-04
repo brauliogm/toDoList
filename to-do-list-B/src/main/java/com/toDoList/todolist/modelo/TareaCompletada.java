@@ -18,7 +18,9 @@ public class TareaCompletada {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer idTareaCompletada;
 
-    @ManyToOne
-    @JoinColumn(name = "idTarea")
-    Tarea tarea;
+    @JoinColumn(name = "descripcion")
+    String descripcion;
+
+    @Column(columnDefinition = "tinyint(1)")
+    private boolean isChecked = true;
 }

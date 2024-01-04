@@ -47,12 +47,12 @@ export class ListaComponent {
     )
   }
 
-  taskComplete(task: Tarea, i: number){
+  taskComplete(descripcion: string, i: number){
     const idDeleteTask = i;
-    console.log(task);
+    console.log(descripcion);
     this.deleteTask(idDeleteTask);
     
-    const tareaCompletada = new TareaCompletada(task);
+    const tareaCompletada = new TareaCompletada(descripcion);
 
     console.log(tareaCompletada);
     

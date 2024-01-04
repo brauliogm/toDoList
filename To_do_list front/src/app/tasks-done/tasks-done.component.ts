@@ -22,8 +22,6 @@ export class TasksDoneComponent {
     this.listaService.obtenerListaTareasCompletadas().subscribe(
       (datos => {
         this.listaComplete = datos;
-        console.log(datos);
-        
       })
     )
   }
@@ -40,8 +38,7 @@ export class TasksDoneComponent {
     )
   }
 
-  taskIncomplete(task: Tarea, i: number){
-    this.listaService.agregarTarea(task)
-    this.deleteTask(i);
+  taskIncomplete(task: TareaCompletada, i: number){
+    
   }
 }
