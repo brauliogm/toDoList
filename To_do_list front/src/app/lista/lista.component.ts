@@ -38,7 +38,6 @@ export class ListaComponent {
   deleteTask(numTarea: number){
     this.listaService.eliminarTarea(numTarea).subscribe(
       datos => {
-        console.log(datos);
         this.obtenerTareas();
       },
       error => {
@@ -48,19 +47,15 @@ export class ListaComponent {
   }
 
   taskComplete(descripcion: string, i: number){
-    const idDeleteTask = i;
-    console.log(descripcion);
-    this.deleteTask(idDeleteTask);
+    this.deleteTask(i);
     
     const tareaCompletada = new TareaCompletada(descripcion);
-
-    console.log(tareaCompletada);
     
     this.listaService.agregarTareaCompletada(tareaCompletada).subscribe(
       {
         next: (datos) => {
-          console.log(datos);
           this.obtenerTareas();
+          this.listaService.updateList();
         }
         ,
         error: (error) => console.log(error)        

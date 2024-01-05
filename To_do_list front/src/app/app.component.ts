@@ -16,11 +16,22 @@ export class AppComponent {
   
   
   ngOnInit(){
+    this.obtenerListaTareasCompletadas();
+    this.listaService.updateList$.subscribe(() => {
+      // Refresh the list or perform any necessary action
+      this.refreshList();
+    });
+  }
+  
+  refreshList() {
+    // Implement logic to refresh the list from the database
+    this.obtenerListaTareasCompletadas();
+  }
+
+  obtenerListaTareasCompletadas(){
     this.listaService.obtenerListaTareasCompletadas().subscribe(
       (datos => {
         this.listaCompletada = datos;
-        console.log(datos);
-        
       })
     )
   }
@@ -28,8 +39,13 @@ export class AppComponent {
   cleanTaskComplete(){
     this.listaService.deleteAllTaskComplete().subscribe(
       {
-        next: (datos) => this.ngOnInit(),
-        error: (error) => console.log(error)
+        next: (datos) => {this.ngOnInit();
+        //console.log(datos);
+        }
+        ,
+        error: (error) => {
+          console.log(error)
+        }
         
       }
     )

@@ -16,6 +16,15 @@ export class TasksDoneComponent {
 
   ngOnInit(){
     this.obtenerListaTareasCompletadas()
+    this.listaService.updateList$.subscribe(() => {
+      // Refresh the list or perform any necessary action
+      this.refreshList();
+    });
+  }
+
+  refreshList() {
+    // Implement logic to refresh the list from the database
+    this.obtenerListaTareasCompletadas();
   }
 
   private obtenerListaTareasCompletadas(){
@@ -29,8 +38,8 @@ export class TasksDoneComponent {
   deleteTask(numTarea: number){
     this.listaService.eliminarTareaCompletada(numTarea).subscribe(
       datos => {
-        console.log(datos);
         this.obtenerListaTareasCompletadas();
+        this.listaService.updateList();
       },
       error => {
         console.log('Error al eliminar tarea:', error);
@@ -38,7 +47,20 @@ export class TasksDoneComponent {
     )
   }
 
-  taskIncomplete(task: TareaCompletada, i: number){
+  taskIncomplete(descripcion: string, i: number){
+    this.deleteTask(i);
     
+    const tareaCompletada = new Tarea(descripcion);
+    
+    this.listaService.agregarTarea(tareaCompletada).subscribe(
+      {
+        next: (datos) => {
+          this.obtenerListaTareasCompletadas();
+          this.listaService.updateList();
+        }
+        ,
+        error: (error) => console.log(error)        
+      }
+    )
   }
 }

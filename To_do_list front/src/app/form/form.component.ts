@@ -11,9 +11,7 @@ import { Router } from '@angular/router';
 export class FormComponent {
   tarea: Tarea = new Tarea();
 
-  constructor(private listaService: ListaService,
-              private router: Router,
-              private cdr: ChangeDetectorRef){}
+  constructor(private listaService: ListaService){}
 
   ngOnInit(){
     
@@ -23,7 +21,7 @@ export class FormComponent {
     this.listaService.agregarTarea(this.tarea).subscribe(
       {
         next: (datos) => {
-          console.log(datos)
+          //console.log(datos)
           this.tarea = new Tarea();
           this.listaService.updateList();
         }
