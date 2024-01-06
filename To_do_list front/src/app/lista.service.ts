@@ -12,6 +12,8 @@ export class ListaService {
   private urlTarea = "http://localhost:8080/toDo-app/tarea";
   private urlTareaCompletada = "http://localhost:8080/toDo-app/tarea-completada";
   private updateListSource = new Subject<void>();
+  tarea: Tarea = new Tarea();
+  tareaExiste: boolean;
 
   updateList$ = this.updateListSource.asObservable();
 
@@ -55,6 +57,11 @@ export class ListaService {
   
   deleteAllTaskComplete(): Observable<Object>{
     return this.clientHTTP.delete(this.urlTareaCompletada);
+  }
+
+  mandarTareaAForm(tarea: Tarea, tareaExiste: boolean){
+    this.tarea = tarea;
+    this.tareaExiste = tareaExiste;
   }
 
   editTask(idTarea: number, task: Tarea): Observable<Object>{

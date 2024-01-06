@@ -12,7 +12,9 @@ export class AppComponent {
   
   listaCompletada: TareaCompletada[];
   
-  constructor(private listaService: ListaService){}
+  constructor(private listaService: ListaService){
+    this.listaCompletada = [];
+  }
   
   
   ngOnInit(){

@@ -12,7 +12,9 @@ export class ListaComponent {
 
   lista: Tarea[];
 
-  constructor(private listaService: ListaService){}
+  constructor(private listaService: ListaService){
+    this.lista = [];
+  }
 
   ngOnInit(){
     this.obtenerTareas()
@@ -63,9 +65,16 @@ export class ListaComponent {
     )
   }
 
-  editTask(task: Tarea){
-    console.log(task);
+
+  obtenerTareaPorId(id: number){
     
+  }
+
+  editTask(task: Tarea){
+    const tareaEstaEnLista:boolean = this.lista.some(tarea => tarea.idTarea === task.idTarea);
+
+    this.listaService.mandarTareaAForm(task, tareaEstaEnLista);
+    this.listaService.updateList();
   }
   
 

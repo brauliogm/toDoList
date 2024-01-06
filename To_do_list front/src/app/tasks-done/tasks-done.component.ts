@@ -12,7 +12,9 @@ export class TasksDoneComponent {
 
   listaComplete: TareaCompletada[];
 
-  constructor(private listaService: ListaService){}
+  constructor(private listaService: ListaService){
+    this.listaComplete = [];
+  }
 
   ngOnInit(){
     this.obtenerListaTareasCompletadas()

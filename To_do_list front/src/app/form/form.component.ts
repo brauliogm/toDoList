@@ -14,20 +14,46 @@ export class FormComponent {
   constructor(private listaService: ListaService){}
 
   ngOnInit(){
-    
+    this.listaService.updateList$.subscribe(() => {
+      // Refresh the list or perform any necessary action
+      this.refreshList();
+    });
+  }
+
+  refreshList() {
+    // Implement logic to refresh the list from the database
+    this.tarea = this.listaService.tarea;
   }
 
   addTask() {
-    this.listaService.agregarTarea(this.tarea).subscribe(
-      {
-        next: (datos) => {
-          //console.log(datos)
-          this.tarea = new Tarea();
-          this.listaService.updateList();
+    const tareaExiste = this.listaService.tareaExiste;
+
+    if(!tareaExiste){
+      this.listaService.agregarTarea(this.tarea).subscribe(
+        {
+          next: (datos) => {
+            this.tarea = new Tarea();
+            this.listaService.tarea = new Tarea();
+            this.listaService.updateList();
+          }
+          ,
+          error: (error) => console.log(error)        
         }
-        ,
-        error: (error) => console.log(error)        
-      }
-    )
+      )
+    } else {
+      this.listaService.editTask(this.tarea.idTarea, this.tarea).subscribe(
+        {
+          next: (datos) => {
+            this.listaService.tareaExiste = false;
+            this.tarea = new Tarea();
+            this.listaService.tarea = new Tarea();
+            this.listaService.updateList();
+          }
+          ,
+          error: (error) => console.log(error)        
+        }
+      )
+    }
+    
   }
 }

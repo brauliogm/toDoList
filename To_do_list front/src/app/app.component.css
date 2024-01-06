@@ -1,0 +1,9 @@
+.alinear{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.margen-imagen{
+    margin-right: 10px;
+}
