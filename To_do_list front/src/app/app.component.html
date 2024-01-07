@@ -21,11 +21,32 @@
                         name="limpiar"
                         id="limpiar"
                         class="btn btn-danger alinear"
-                        (click)="cleanTaskComplete()"
+                        data-bs-toggle="modal" 
+                        data-bs-target="#exampleModal"
+                        
                     >
                     <img class="margen-imagen" src="../../assets/icons8-borrar-para-siempre-50.png" alt="" height="20px" width="20px">
                     Clean List Done
                     </button>
+                    
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Delete task(s)</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Are you sure?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="cleanTaskComplete()">Confirm</button>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>        
             </div>
             <div class="col-xl-7">
