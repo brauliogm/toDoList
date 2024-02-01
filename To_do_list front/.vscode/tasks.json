@@ -37,6 +37,21 @@
           }
         }
       }
-    }
+    },
+    // {
+    //   "label": "ng serve -o",
+    //   "type": "npm",
+    //   "script": "start",
+    //   "group": {
+    //     "kind": "build",
+    //     "isDefault": true
+    //   },
+    //   "problemMatcher": [
+    //     "$tsc"
+    //   ],
+    //   "runOptions": {
+    //     "runOn": "folderOpen"
+    //   }
+    // }
   ]
 }
